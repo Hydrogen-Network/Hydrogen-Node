@@ -1,79 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&amp;display=swap" rel="stylesheet" />
-        <link id="dynamic-favicon" rel="icon" type="image/x-icon" href="./img/gas.png" />
-        <script src="./js/main.js"></script>
-        <script src="./js/settings.js"></script>
-        <script src="./js/shortkey.js"></script>
-        <script src="./js/cookies.js" async defe>
-            cookieconsent();
-        </script>
-        <script src="./js/home.js"></script>
-        <script src="./js/cloak.js"></script>
-        <meta name="description" content="warwarwarwarwarwar" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-        <meta name="google-site-verification" content="DrEILn1k0ldsT4IXAsUkFZSVJfZvIogS82T82tKWy8c" />
-        <link rel="stylesheet" href="./css/index.css" />
-        <title id="dynamic-title">Hydrogen</title>
-        <script>
-            
-function addHack(target, button) {
-    let hacks = JSON.parse(localStorage.getItem('hacks')) || [];
-
-    if (hacks.includes(target)) {
-        hacks = hacks.filter(hack => hack !== target);
-        button.innerHTML = 'Install<i class="fa-solid fa-circle-down"></i>';
-        button.classList.remove('remove');
-    } else {
-        hacks.push(target);
-        button.innerHTML = 'Remove<i class="fa-solid fa-trash"></i>';
-        button.classList.add('remove');
-    }
-
-    localStorage.setItem('hacks', JSON.stringify(hacks));
-    console.log(hacks);
-}
-            fetch('js/json/hacks.json')
-    .then(response => response.json())
-    .then(data => {
-        const gameHacksElement = document.getElementById('game-hacks');
-      
-        data.forEach(hack => {
-            const pluginDiv = document.createElement('div');
-            pluginDiv.className = 'plugin';
-  
-            const img = document.createElement('img');
-            img.src = hack.image;
-            img.alt = 'plugin icon';
-            pluginDiv.appendChild(img);
-  
-            const span = document.createElement('span');
-  
-            const h2 = document.createElement('h2');
-            h2.textContent = hack.name;
-            span.appendChild(h2);
-  
-            const button = document.createElement('button');
-            button.innerHTML = 'Install<i class="fa-solid fa-circle-down"></i>';
-            button.addEventListener('click', () => addHack(hack.target, button));
-            span.appendChild(button);
-  
-            pluginDiv.appendChild(span);
-            gameHacksElement.appendChild(pluginDiv);
-
-            let hacks = JSON.parse(localStorage.getItem('hacks')) || [];
-            if (hacks.includes(hack.target)) {
-                button.innerHTML = 'Remove<i class="fa-solid fa-trash"></i>';
-                button.classList.add('remove');
-            }
-        });
-    })
-    .catch(error => console.error('An error occurred:', error));
-        </script>
+    <%- include("./partials/head.ejs") %>
        <style>
           .plugins {
     width: 5vw;
@@ -180,7 +107,6 @@ function addHack(target, button) {
     outline: 2px solid #d63333;
 }
        </style>
-    </head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1GKR3GL1R"></script>
     <script>
@@ -210,19 +136,17 @@ function addHack(target, button) {
                  </div>
              </div>
          </div>
-        <div class="navbar">
-            <a href="./"><img style="width: 50% height: auto;" class="shaking" width="40" height="40" src="./img/gas.png" /></a>
-            <div class="navitems" style="gap: 5px; display: flex !important; justify-content: center; align-items: center;">
-                <a href="./apps.html">Apps</a>
-                <a href="./extras.html">Extras</a>
-                <a href="./games.html">Games</a>
-                <a href="./faq.html">FAQ</a>
-                <a href="./settings.html">Settings</a>
-            </div>
-        </div>
+         <%- include("./partials/nav.ejs") %>
         <div class="container" id="particles-js">
-            <h1>Game Cheats &#38; Hacks!</h1>
+            <h1>Plugins!</h1>
             <div class="plugins" id="game-hacks">
+                <div class="plugin">
+                    <img src="" alt="plugin icon">
+                    <span>
+                        <h2>Galaxy Theme</h2>
+                        <button onclick="localStorage.setItem('websiteCSS', 'https://cdn.z1g-project.pages.dev/sodium/themes/galaxy.css');">Install<i class="fa-solid fa-circle-down"></i></button>
+                    </span>
+                </div>
         </div>
         <footer style="width: 100%; padding: 0; margin: 0; margin-top: 100px; display: flex; flex-direction: row; justify-content: center; align-items: space-between;">
             <div style="display: flex; justify-content: space-between !important; align-items: left;">
